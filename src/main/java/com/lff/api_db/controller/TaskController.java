@@ -51,16 +51,16 @@ public class TaskController {
           @PathVariable("id") Long userId,
           @RequestBody @Valid TaskRequestDTO dto) {
 
-     UserDomain user = userRepository.findById(userId)
-          .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+          UserDomain user = userRepository.findById(userId)
+               .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-     TaskDomain task = new TaskDomain();
-     task.setTitle(dto.getTitle());
-     task.setDescription(dto.getDescription());
-     task.setStatus(dto.getStatus());
-     task.setUser(user);
-     
-     return ResponseEntity.ok(service.createTask(task));
+          TaskDomain task = new TaskDomain();
+          task.setTitle(dto.getTitle());
+          task.setDescription(dto.getDescription());
+          task.setStatus(dto.getStatus());
+          task.setUser(user);
+              
+          return ResponseEntity.ok(service.createTask(task));
      }
 
      @PutMapping("{id}")
