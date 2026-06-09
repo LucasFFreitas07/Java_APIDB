@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lff.api_db.domain.UserDomain;
+import com.lff.api_db.dto.UserDTO;
 import com.lff.api_db.service.UserService;
-import com.lff.api_db.dto.*;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/users")
@@ -35,7 +36,7 @@ public class UserController {
 
      @PostMapping
      @Transactional
-     public UserDomain createUser(@RequestBody UserDomain user){ return service.createUser(user); }
+     public UserDomain createUser(@RequestBody @Valid UserDomain user){ return service.createUser(user); }
 
      @GetMapping("{id}")
      public Optional<UserDomain> getById(@PathVariable Long id){ return service.getById(id); }
