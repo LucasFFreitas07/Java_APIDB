@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<UserDomain, Long>{
 
-     public List<UserDomain> findByEmail(String email);
+     List<UserDomain> findByEmail(String email);
 
      List<UserDomain> findByActive(Boolean active);
 
